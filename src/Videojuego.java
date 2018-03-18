@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-
 public class Videojuego {
 
     String nombre;
@@ -14,6 +11,7 @@ public class Videojuego {
         this.director = director;
         this.lanzamiento = lanzamiento;
     }
+
     // Método que si le indicas un género y un creador a un videojuego te indique si es o no de ese género y si pertenece a ese director
     public void esGeneroYDirector(String gen, Director dic){
         if (genero.equals(gen) && director.equals(dic)){

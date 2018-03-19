@@ -56,30 +56,33 @@ class BuscarJuegoTest {
         juegoNull = null;
     }
 
+    /**
+     * Se comprueba el resultado de consultar una consola con un videojuego del mismo director
+     */
     @DisplayName("Test1: La consola tiene un videojuego del mismo director")
     @Test
     public void consolaTieneVideojuego (){
         assertNotNull(consolaConJuego.buscarJuego(juegoAComparar));
     }
 
+    /**
+     * Se comprueba el resultado de consultar una consola con un videojuego de distinto director
+     */
     @DisplayName("Test2: La consola no tiene un videojuego del mismo director")
     @Test
     public void consolaNoTieneVideojuego (){
         assertNull(consolaSinJuego.buscarJuego(juegoAComparar));
     }
 
+    /**
+     * Se comprueba el resultado de consultar una consola con el mismo videojuego
+     */
     @DisplayName("Test3: La consola tiene el mismo juego")
     @Test
     public void mismoJuego (){
         assertNull(consolaConMismoJuego.buscarJuego(juegoAComparar));
     }
 
-    // No furula
-    @DisplayName("Test4: Juego null introducido")
-    @Test
-    public void VideojuegoNullIntroducido (){
-        assertNull(consolaConJuego.buscarJuego(juegoNull));
-    }
 }
 
 

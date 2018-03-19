@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.*;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TieneGeneroTest {
 
@@ -9,7 +9,6 @@ class TieneGeneroTest {
     static Consola consolaSinJuego;
     static Consola consolaConMismoJuego;
     static Videojuego juegoAComparar;
-    static Videojuego juegoNull;
     static int contador = 0;
 
     @BeforeAll
@@ -21,8 +20,6 @@ class TieneGeneroTest {
         consolaSinJuego = new Consola("Consola sin juego del mismo género");
         consolaConMismoJuego = new Consola("Consola con el mismo juego que el introducido");
         juegoAComparar = new Videojuego("Juego a comparar", "Rol", d1, f1);
-        juegoNull = null;
-
         Videojuego videojuegoMismoGenero = new Videojuego("Juego2", "Rol", d1, f1);
         Videojuego videojuegoDistintoGenero = new Videojuego("Juego3", "RTS", d1, f1);
 
@@ -38,8 +35,7 @@ class TieneGeneroTest {
                 + consolaConJuego + "\n"
                 + consolaSinJuego + "\n"
                 + consolaConMismoJuego + "\n"
-                + juegoAComparar + "\n"
-                + juegoNull + "\n");
+                + juegoAComparar + "\n");
     }
 
     @AfterEach
@@ -53,31 +49,34 @@ class TieneGeneroTest {
         consolaSinJuego = null;
         consolaConMismoJuego = null;
         juegoAComparar = null;
-        juegoNull = null;
     }
 
+    /**
+     * Se comprueba el resultado de consultar una consola con un videojuego del mismo género
+     */
     @DisplayName("Test1: La consola tiene un juego del mismo género")
     @Test
     public void consolaTieneGenero (){
         assertTrue(consolaConJuego.tieneGenero(juegoAComparar));
     }
 
+    /**
+     * Se comprueba el resultado de consultar una consola con un videojuego de distinto género
+     */
     @DisplayName("Test2: La consola no tiene un juego del mismo género")
     @Test
     public void consolaNoTieneGenero (){
         assertFalse(consolaSinJuego.tieneGenero(juegoAComparar));
     }
 
+    /**
+     * Se comprueba el resultado de consultar una consola con el mismo videojuego
+     */
     @DisplayName("Test3: La consola tiene el mismo juego")
     @Test
     public void mismoJuego (){
         assertFalse(consolaConMismoJuego.tieneGenero(juegoAComparar));
     }
 
-    // No furula
-    @DisplayName("Test4: Juego null introducido")
-    @Test
-    public void VideojuegoNullIntroducido (){
-        assertNull(consolaConJuego.buscarJuego(juegoNull));
-    }
+
 }

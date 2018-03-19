@@ -9,12 +9,10 @@ class ShortNamesTest {
     static Consola consola10caracteres;
     static Consola consola11caracteres;
     static Consola consolaVacia;
-    static Consola consolaConJuegoNull;
     static Videojuego videojuego4caracteres;
     static Videojuego videojuego5caracteres;
     static Videojuego videojuego10caracteres;
     static Videojuego videojuego11caracteres;
-    static Videojuego videojuegoNull;
     static int contador = 0;
 
 
@@ -28,13 +26,11 @@ class ShortNamesTest {
         consola10caracteres = new Consola("Consola con un juego de 10 caracteres");
         consola11caracteres = new Consola("Consola con un juego de 11 caracteres");
         consolaVacia = new Consola("Consola sin juegos");
-        consolaConJuegoNull = new Consola("Consola con un juego null");
 
         videojuego4caracteres = new Videojuego("1234", "Rol", d1, f1);
         videojuego5caracteres = new Videojuego("12345", "Rol", d1, f1);
         videojuego10caracteres = new Videojuego("1234567890", "Rol", d1, f1);
         videojuego11caracteres = new Videojuego("12345678901", "Rol", d1, f1);
-        videojuegoNull = null;
 
         consola4caracteres.agregar(videojuego4caracteres);
         consola5caracteres.agregar(videojuego5caracteres);
@@ -73,39 +69,53 @@ class ShortNamesTest {
         videojuego11caracteres = null;
     }
 
+    /**
+     * Pruebas de valores límite
+     */
+
+    /**
+     * Se comprueba el resultado de introducir un videojuego de 4 caracteres
+     */
     @DisplayName("Test1: La consola tiene un videojuego de 4 caracteres")
     @Test
     public void videojuego4caracteres (){
         assertNull(consola4caracteres.shortNames());
     }
 
+    /**
+     * Se comprueba el resultado de introducir un videojuego de 5 caracteres
+     */
     @DisplayName("Test2: La consola tiene un videojuego de 5 caracteres")
     @Test
     public void videojuego5caracteres (){
         assertNotNull(consola5caracteres.shortNames());
     }
 
+    /**
+     * Se comprueba el resultado de introducir un videojuego de 10 caracteres
+     */
     @DisplayName("Test3: La consola tiene un videojuego de 10 caracteres")
     @Test
     public void videojuego10caracteres (){
         assertNotNull(consola10caracteres.shortNames());
     }
 
+    /**
+     * Se comprueba el resultado de introducir un videojuego de 11 caracteres
+     */
     @DisplayName("Test4: La consola tiene un videojuego de 11 caracteres")
     @Test
     public void videojuego11caracteres (){
         assertNull(consola11caracteres.shortNames());
     }
 
+    /**
+     * Se comprueba el resultado de buscar en una consola vacía
+     */
     @DisplayName("Test5: Consola sin juegos")
     @Test
     public void consolaVacia (){
         assertNull(consolaVacia.shortNames());
     }
 
-    @DisplayName("Test6: Consola con juego null")
-    @Test
-    public void videojuegoNull (){
-        assertNull(consolaConJuegoNull.shortNames());
-    }
 }
